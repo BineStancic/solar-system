@@ -36,8 +36,8 @@ distToSun = 1.496e11
 
 
 def scale(param):
-    #scaled = param*5.3e-7              #SCALE FOR EARTH MOON
-    scaled = param*1.3368984e-9         #SCALE FOR SUN
+    scaled = param*5.3e-7              #SCALE FOR EARTH MOON
+    #scaled = param*1.3368984e-9         #SCALE FOR SUN
     return scaled
 
 scaledEarth = scale(rEarth)
@@ -51,10 +51,6 @@ scaledSunMass = scale(massSun)
 scaledEarthMoon = scale(distToMoon)
 scaledEarthSun = scale(distToSun)
 
-#print(scaledEarthSun)
-#print(scaledEarthMoon)
-#print(scaledEarth)
-#print(scaledSun)
 
 moonV = 1.022e3
 earthV = 2.9722e4
