@@ -1,4 +1,6 @@
 import math
+import sys
+#print(sys.maxsize)
 
 
 gravConst = 6.67*10**(-11)
@@ -15,30 +17,49 @@ def newtonGrav(m1, m2, x1, y1, x2, y2):
     fy = math.sin(theta) * F
     return fx, fy
 
-#def gravField(m, r):
-#    g = gravConst*m/(r**2)
-#    return g
 
 def orbitVel(m, r):
     v = math.sqrt(gravConst*m/(r))
     return v
 
 
-massEarth = 5.972 * 10 **(24)
-massMoon = 7.348 * 10 **(22)
-#massSun = 3.48 * 10**(30)
+massEarth = 5.972e24
+massMoon = 7.348e22
+massSun = 1.9891e30
 
-rEarth = 6.371 * 10 **(6)
-rMoon = 1.737 * 10 **(6)
-#rSun = 6.95* 10 **(8)
+rEarth = 6.371e6
+rMoon = 1.737e6
+rSun = 6.95510e8
 
-def scaleDist(dist):
-    scaledDist = dist/(1000000**6)
-    return int(scaledDist)
+distToMoon = 3.844e8
+distToSun = 1.496e11
 
-scaledEarth = scaleDist(rEarth)
-scaledMoon = scaleDist(rMoon)
 
-distToMoon = 3.844 * 10 **(8)
+def scale(param):
+    #scaled = param*5.3e-7              #SCALE FOR EARTH MOON
+    scaled = param*1.3368984e-9         #SCALE FOR SUN
+    return scaled
 
-scaledDist = scaleDist(distToMoon)
+scaledEarth = scale(rEarth)
+scaledMoon = scale(rMoon)
+scaledSun = scale(rSun)
+
+scaledEarthMass = scale(massEarth)
+scaledMoonMass = scale(massMoon)
+scaledSunMass = scale(massSun)
+
+scaledEarthMoon = scale(distToMoon)
+scaledEarthSun = scale(distToSun)
+
+#print(scaledEarthSun)
+#print(scaledEarthMoon)
+#print(scaledEarth)
+#print(scaledSun)
+
+moonV = 1.022e3
+earthV = 2.9722e4
+
+#SCALING VELOCITY BREAKES the sim
+scaledMoonV = scale(moonV)
+scaledEarthV = scale(earthV)
+#print(scaledMoonV)
