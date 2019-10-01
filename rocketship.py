@@ -53,20 +53,31 @@ class Rocket():
         self.mass = mass
         self.boost = 20
 
-    def move(self):
+    def moveUp(self):
         pygame.draw.rect(wn, (255, 0, 0), (int(self.pos[0]), int(self.pos[1]+10), 3, 5))
         self.vel[1] -= self.boost
         pygame.display.update()
         print(self.vel)
 
+    def moveRight(self):
+        pygame.draw.rect(wn, (255, 0, 0), (int(self.pos[0]), int(self.pos[1]+10), 3, 5))
+        self.vel[0] += self.boost
+        pygame.display.update()
+        print(self.vel)
+
+    def moveLeft(self):
+        pygame.draw.rect(wn, (255, 0, 0), (int(self.pos[0]), int(self.pos[1]+10), 3, 5))
+        self.vel[0] -= self.boost
+        pygame.display.update()
+        print(self.vel)
+
     def update(self):
+        #if self.pos[0] > earth.pos[0]:
         self.pos[0] += self.vel[0] * dt
         self.pos[1] += self.vel[1] * dt
-        return
 
     def draw(self, wn):
         pygame.draw.rect(wn, (255, 255, 255), (int(self.pos[0]), int(self.pos[1]), 2, 10))
-        return
 
 def drawScene():
     keys = pygame.key.get_pressed()
@@ -80,7 +91,11 @@ def drawScene():
     apolo.draw(wn)
     apolo.update()
     if keys[pygame.K_SPACE]:
-        apolo.move()
+        apolo.moveUp()
+    if keys[pygame.K_LEFT]:
+        apolo.moveLeft()
+    if keys[pygame.K_RIGHT]:
+        apolo.moveRight()
     pygame.display.update()
 
 ####GOES IN MAIN
